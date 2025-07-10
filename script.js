@@ -1,8 +1,11 @@
 const resetButton = document.querySelector(".reset-button");
 const gridContainer = document.querySelector(".grids");
 
-gridContainer.addEventListener("mouseenter", (e) => {
-    // change background  of targetto random colour
+gridContainer.addEventListener("mouseover", (e) => {
+    if (e.target !== gridContainer) {//correct event delegation
+        const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+        e.target.style.backgroundColor = randomColor;
+    } // Change background color
 });
 
 resetButton.addEventListener("click", () => {
@@ -11,13 +14,12 @@ resetButton.addEventListener("click", () => {
         size = prompt("Please enter a size for your grid");
     }
     while (size === '');
+    gridContainer.innerHTML = '';//here it's safe, ur not prompting for any input , getting nodes list and removing doesnt work
 
-    children = gridContainer.childNodes;
-    for (node of children) {
-        gridContainer.removeChild(node);
-    }
+
+    size = Number(size);
     let gridSize = getGridSize(size);
-    createGrids(Number(size, gridSize));
+    createGrids(size, gridSize);
 
 });
 
@@ -34,10 +36,13 @@ function createGrid(size) {
     grid.style.width = `${size}px`;
     grid.style.height = `${size}px`;
     grid.style.backgroundColor = "white";
-    grid.style.borderColor = "white";
-    grid.style.border = "20px";
+    grid.style.border = "5px solid white";  // Add border width, style, and color
+    grid.style.boxSizing = "border-box"; // Include border in size calculation
+    return grid;
 }
 
-function getGridSize(number = 10, widthDimension = 1000, heightDimension = 1000) {
-    return (number / widthDimension).toFixed(0);
+function getGridSize(number = 10, widthDimension = 750, heightDimension = 750) {
+    const width = widthDimension || gridContainer.offsetWidth;
+    const height = heightDimension || gridContainer.offsetHeight;
+    return width / number;
 }

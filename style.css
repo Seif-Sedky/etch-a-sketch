@@ -7,21 +7,24 @@ body{
 }
 
 button{
-    width: 100px;
+    margin: 25px;
+    width: 250px;
     height: 75px;
     color:rosybrown;
     font-weight: 900;
     font-style: italic;
     background-color: bisque;
     border-color: azure;
+    font-size: 50px;
 }
 
 .grids{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 1000px;
-    height: 1000px;
+    width: 750px;
+    height: 750px;
     border-color: pink;
-    border: 20px;
+    border-style: solid;
+    border-width: 10px;
 }
