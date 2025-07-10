@@ -13,7 +13,7 @@ resetButton.addEventListener("click", () => {
     do {
         size = prompt("Please enter a size for your grid");
     }
-    while (size === '');
+    while (size === '' || size >= 60);
     gridContainer.innerHTML = '';//here it's safe, ur not prompting for any input , getting nodes list and removing doesnt work
 
 
