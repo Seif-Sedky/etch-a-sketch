@@ -36,7 +36,6 @@ function createGrid(size) {
     grid.style.width = `${size}px`;
     grid.style.height = `${size}px`;
     grid.style.backgroundColor = "white";
-    grid.style.border = "5px solid white";  // Add border width, style, and color
     grid.style.boxSizing = "border-box"; // Include border in size calculation
     return grid;
 }
